@@ -4,8 +4,6 @@ from sqlalchemy.orm import relationship, sessionmaker
 from sqlalchemy.exc import SQLAlchemyError
 
 
-
-
 Base = declarative_base()
 
 class Fornecedor(Base):
@@ -54,12 +52,16 @@ try:
     with Session() as session: # Usando a sessao corretamente com o gerenciador de contexto
         produtos = [
             Produto(nome='Produto 1', descricao='Descricao produto 1', preco=100, fornecedor_id='1'),
-            Produto(nome='Produto 2', descricao='Descricao produto 2', preco=100, fornecedor_id='2'),
-            Produto(nome='Produto 3', descricao='Descricao produto 3', preco=100, fornecedor_id='3'),
-            Produto(nome='Produto 4', descricao='Descricao produto 4', preco=100, fornecedor_id='4'),
-            Produto(nome='Produto 5', descricao='Descricao produto 5', preco=100, fornecedor_id='5')
+            Produto(nome='Produto 2', descricao='Descricao produto 2', preco=300, fornecedor_id='2'),
+            Produto(nome='Produto 3', descricao='Descricao produto 3', preco=400, fornecedor_id='3'),
+            Produto(nome='Produto 4', descricao='Descricao produto 4', preco=800, fornecedor_id='4'),
+            Produto(nome='Produto 5', descricao='Descricao produto 5', preco=1000, fornecedor_id='5')
         ]
         session.add_all(produtos)
         session.commit()
 except SQLAlchemyError as e: # Capiturando excessoes do SQLAlchemy
     print(f"Erro ao inserir produto: {e}")
+
+
+
+
